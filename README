@@ -1,0 +1,39 @@
+Don't forget to add .env file with:
+
+    DB_USER=<user>             |
+    DB_PWD=<password>          |
+    DB_NAME=<database-name>    |
+                               |
+    PORT=<port-name>           |
+
+---
+
+This template is mainly a backend template and allows for automatic routing and route protection
+for admin, private and public directories
+
+I-Public
+
+    Every file in the public directory are accessible by everybody with
+    the url '/public/<file-relative-path-in-public-folder>'
+
+II-private
+
+    Every file in the private direcory are only accessible by connected users with
+    the url '/connected/<file-relative-path-in-private-folder>'
+
+III-admin
+
+    Same that for private directory but with admin accounts, url: '/admin/<file-relative-path-in-admin-folder>'
+
+Those files can eventually have supplementary routes if manually added later.
+
+----------- login -----------
+
+Every rejected access falls back on the login page, which is accessible by everybody since in the public folder
+
+----------- admin -----------
+
+You can't sign up for an admin account.
+Only super admins with access to the Admins DB table can add and remove admin rights
+If someone tries to login, the login first verifies if user is admin and if not, it then verifies
+for user account
